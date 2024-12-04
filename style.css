@@ -1,0 +1,366 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+html{
+    scroll-behavior: smooth;
+}
+
+body{min-height: 100vh;
+    overflow-x: hidden;
+
+    }
+nav{
+margin: 0;
+padding: 0;
+background-color: gray;
+box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+nav ul{
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}  
+nav li{
+    height: 50px;
+}
+nav a {
+    height: 100%;
+    padding: 0 30px;
+    text-decoration: none;
+    /* to center the link ites vertically */
+    display: flex;
+    align-items: center;
+    color: #000000;
+}
+/* adding a hover effect */
+nav a:hover{
+    background-color: #f0f0f0;
+}
+/* sigh */
+nav li:first-child{
+    margin-right: auto;
+}
+.sidebar{
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 80%;
+    max-width: 300px;
+    z-index: 999;
+    background-color: rgba(255, 255, 255, 0);
+     /* backdrop-filter: blur(10px) affects how the items will be rendered */
+    backdrop-filter: blur(10px);
+    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);  
+    /* used to be display flex but got changed to display  none so it will  disappeer and let me give it an icon */
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.sidebar li{
+width: 100%;
+}
+.sidebar a{
+    width: 100%;
+}
+/* now give it display none to make it disappea and that way it will begone and will no longer be displayed on larger screens*/
+.menu-button{
+display: none;
+}
+/* we give postion relative to our hero section so */
+.hero{
+    padding: 100px 20px;
+    background: url(./images/demo/backgrounds/background\ image.png) no-repeat;
+    color: white;
+    position: relative;
+    text-align: left;
+    padding-left: 13%;
+    /* this is going to put the overlay above the hero section */
+    z-index: 1;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+/* we can give the overlay absolute this overlay darkens the hero section while still maintaining transperancy
+any other thing you see there is to make sure nothing puts it out of place hence why you see all the 0's */
+.hero ::before {
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: rgba(0,0,0,0.2);
+/* thiis is to help put the overlay behind the text too */
+z-index: -1;
+}
+/* Hero Title */
+h1 {
+    margin-bottom: 20px;
+    font-size: 2.5rem; /* Responsive heading size */
+    line-height: 1.3;
+  }
+  
+  /* Hero Buttons Container */
+  .herobtns {
+    display: inline-flex;
+    flex-wrap: wrap; /* Ensure buttons wrap on smaller screens */
+    gap: 15px; /* Reduce gap for mobile devices */
+    position: relative;
+    z-index: 1;
+    margin-top: 25px;
+  }
+  
+  /* Order Button */
+  .orderbtn {
+    color: white;
+    padding: 15px 25px;
+    border: none;
+    background-color: #437000;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 1rem; /* Responsive font size */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .orderbtn:hover {
+    background-color: #356000;
+    transform: translateY(-3px); /* Lift effect on hover */
+  }
+  
+  /* Support Button */
+  .supportbtn {
+    color: rgb(90, 245, 19);
+    padding: 15px 30px;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 1rem; /* Responsive font size */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .supportbtn:hover {
+    background-color: #a2ff0d;
+    transform: translateY(-3px); /* Lift effect on hover */
+  }
+@media (max-width: 768px) {
+  .hero {
+      padding: 80px 15px; /* Adjust padding for tablets */
+      text-align: center; /* Center-align content for smaller screens */
+      padding-left: 5%; /* Slightly reduce left padding */
+  }
+
+  h1 {
+      font-size: 2rem; /* Adjust heading size for tablets */
+  }
+
+  .herobtns {
+      justify-content: center; /* Center buttons */
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+      padding: 60px 10px; /* Compact padding for mobile */
+      text-align: center; /* Center content */
+      padding-left: 0; /* Remove left padding for mobiles */
+  }
+
+  h1 {
+      font-size: 1.5rem; /* Smaller heading for mobile */
+  }
+
+  .herobtns {
+      flex-direction: column; /* Stack buttons vertically */
+      gap: 10px; /* Reduce gap between buttons */
+  }
+
+  .orderbtn, .supportbtn {
+      font-size: 0.9rem; /* Reduce font size for mobile buttons */
+      padding: 12px 20px; /* Compact button size */
+  }
+}
+/* Book Section - Main Container */
+.book-section {
+    display: flex;
+    flex-wrap: wrap; /* Ensure items wrap on smaller screens */
+    justify-content: center; /* Center items horizontally */
+    gap: 20px; /* Add space between cards */
+    padding: 20px; /* Ensure breathing space around cards */
+    margin: 20px auto; /* Center section with auto margins */
+    max-width: 1200px; /* Limit the width on large screens */
+}
+
+/* Individual Book Card */
+.book {
+    background-color: yellowgreen;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    width: calc(100% / 3 - 20px); /* Three cards per row on larger screens */
+    max-width: 300px; /* Limit the width for consistency */
+    flex: 1 1 calc(33.33% - 20px); /* Maintain responsive sizing */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add hover effect */
+}
+
+.book:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Elevate shadow on hover */
+}
+
+/* Card Image */
+.cardimg {
+    width: 100%; /* Make image responsive */
+    height: 200px;
+    object-fit: cover; /* Ensure the image fits without distortion */
+    border-radius: 8px 8px 0 0; /* Rounded corners for the top */
+}
+
+/* Title */
+.title {
+    font-weight: bold;
+    font-size: 18px;
+    margin: 10px 0;
+    color: #fff;
+}
+
+/* Book Description */
+.book-description {
+    font-size: 14px;
+    color: #f0f0f0;
+    margin: 10px;
+    padding: 0 10px; /* Add space around text */
+}
+
+/* Buy Button */
+.buy {
+    background-color: #6fd603;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.buy:hover {
+    background-color: #4caf50;
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .book {
+        flex: 1 1 calc(50% - 20px); /* Two cards per row */
+    }
+}
+
+@media (max-width: 480px) {
+    .book {
+        flex: 1 1 100%; /* One card per row */
+    }
+    .cardimg {
+        height: 180px; /* Adjust image height for smaller screens */
+    }
+    .title {
+        font-size: 16px; /* Adjust font size for titles */
+    }
+    .buy {
+        font-size: 12px; /* Adjust button size */
+        padding: 8px 15px;
+    }
+}
+
+.buy:hover{
+    background-color: #00ff7328;
+}
+.About-section{
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    padding: 50px;
+    margin: 50px;
+}
+.About{
+    color: yellowgreen;
+    font-style: italic;
+    font-weight: bold;
+}
+.icons-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    margin: 50px;
+    padding: 50px;
+}
+.icon{
+    max-width: 100%;
+    height: auto;
+    display: block;
+    padding: 35px;
+}
+footer{
+    background-color: gray;
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+}
+/* responsiveness for moblie devices displays */
+@media(max-width: 800px){
+    /* now every element that has the class .hideonmoblile will not be visisble on devices that are smaller than 800 pixels (px) */
+.hideonmobile{
+    display: none;
+}
+/* adding this will only make available on smaller screens frs i a talking about the code below you kbow the one for the menu button? */
+.menu-button{
+    display: block;
+}
+}
+/* we want this to look sexy on moblie devices desplay sooooo weeee yeah  */
+@media(max-width:400px){
+    .sidebar{
+        width:100%;
+        height: 100vh;
+    }
+}
+@media(max-width:600px) {
+    .icons-section {
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+    }
+    .icon {
+        flex: 1 1 45%;
+        margin: 10px;
+    }
+}
+
+@media(max-width:400px) {
+    .icon {
+        flex: 1 1 100%;
+    }
+}
+@media(max-width:400px) {
+    body {
+        font-size: 14px;
+    }
+    h1 {
+        font-size: 1.5rem;
+    }
+    .hero {
+        padding: 20px 10px;
+    }
+}
